@@ -80,7 +80,7 @@ describe('saga', () => {
 
 ### Errors
 
-Whenever an expected value is not met `saganario` throws an error which contains in its message the expected value, the actual value and also the line in your test which caused the error.
+Whenever an expected value is not met `saganario` throws an error whose message contains: the expected value, the actual value and also the line in your test which caused the error.
 
 Example saga:
 
@@ -96,7 +96,7 @@ Test:
 ```javascript
 1. const test = prepareTest(saga, [
 2.   expectNext('value1');
-3.   expectNext('otherValue');
+3.   expectNext('otherValue'); // on this line the expectation is not met
 4. ]);
 ```
 
