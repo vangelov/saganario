@@ -123,7 +123,7 @@ This is the most common type of expectation. It just checks if the next yielded 
 
 #### `expectEventually`
 
-Often you don't care for all the values a saga yields, but only that it eventually emits a certain value. Take the following saga as an example:
+Often you don't care for all the values the saga yields, but only that it eventually emits a certain value. Take the following saga as an example:
 
 ```javascript
 function *saga() {
@@ -158,7 +158,7 @@ const test = prepareTest(saga, [
 
 #### `expectEnd`
 
-This type of expectation is used when you want check that after the expected value is emitted the generator ends.
+This type of expectation is used when you want check that after the expected value is emitted, the generator ends.
 
 Example saga:
 
@@ -178,7 +178,7 @@ const test = prepareTest(saga, [
 ]);
 ```
 
-An error will be thrown if the generator is not done when `expectEnd` is checked.
+*Note: An error will be thrown if the generator is not done when `expectEnd` is checked.*
 
 ### Giving values
 
