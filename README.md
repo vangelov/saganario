@@ -192,6 +192,6 @@ The only function you use for this is `ifGiven`. If the argument you set is not 
 
 In `/examples` folder you will find several tests for sagas of different complexities. You can run them with: `npm run examples`.
 
-### Test
+## Test
 
 To run the tests execute: `npm test`.
