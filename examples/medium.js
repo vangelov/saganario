@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import { prepareTest, expectNext, ifGiven, expectEventually } from '../lib';
 
-// Saga:
+// Saga (from https://github.com/jfairbank/redux-saga-test-plan/tree/master/docs/unit-testing):
 
 function identity(value) {
   return value;
@@ -30,27 +30,6 @@ const error = new Error('My Error');
 
 describe('mainSaga', () => {
   it('Does not throw in scenario', () => {
-    const test = prepareTest(mainSaga, 4, 2, 20, [
-      expectNext(take('HELLO')),
-
-      ifGiven(action), [
-        expectNext(put({ type: 'ADD', payload: 6 })),
-        expectNext(call(identity, action)),
-        expectNext(fork(otherSaga, 20)),
-      ],
-      ifGiven(error), [
-        expectNext(put({ type: 'ERROR', payload: error })),
-      ],
-    ]);
-
-    expect(test).to.not.throw();
-  });
-});
-
-// Test with eventual expectation
-
-describe('mainSaga', () => {
-  it('Does not throw in scenario 1*', () => {
     const test = prepareTest(mainSaga, 4, 2, 20, [
       expectNext(take('HELLO')),
 

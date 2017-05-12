@@ -1,7 +1,7 @@
 {
   "name": "saganario",
   "version": "1.0.0",
-  "description": "A compact way to test redux sagas",
+  "description": "A compact and powerful way to unit test redux sagas",
   "main": "dist/index.js",
   "scripts": {
     "lint": "eslint './src/**/*.js' './test/**/*.js' './examples/**/*.js'",

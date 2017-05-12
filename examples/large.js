@@ -3,7 +3,7 @@ import { call, put } from 'redux-saga/effects';
 
 import { prepareTest, expectNext, ifGiven } from '../lib';
 
-// Saga:
+// Saga (from https://github.com/antoinejaussoin/redux-saga-testing#testing-a-complex-saga):
 
 const splitApi = () => {};
 const someActionSuccess = payload => ({ type: 'SOME_ACTION_SUCCESS', payload });
@@ -37,6 +37,7 @@ describe('mySaga', () => {
   it('Does not throw exception in scenario 1', () => {
     const test = prepareTest(mySaga, 'hello,foo,bar,world', [
       expectNext(call(splitApi, 'hello,foo,bar,world')),
+
       ifGiven(['hello', 'foo', 'bar', 'world']), [
         expectNext(put(someActionSuccess(['hello', 'world']))),
       ],
