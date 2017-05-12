@@ -102,7 +102,7 @@ Test:
 
 An error will be thrown with the following message `[expected]: value1; [actual]: otherValue (<path-to-your-file.js>:3)`.
 
-If you need to use the information from the message you can catch the error to get it in this way:
+If you need to use the information from the message you can catch the error and get it in this way:
 
 ```javascript
 try {
