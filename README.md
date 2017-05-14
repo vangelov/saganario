@@ -1,7 +1,7 @@
 # saganario
 
 When I first began writing unit tests for sagas using a standard framework such as `mocha`, I noticed
-that there was too much boilerplate that had be written and it was tedious to test different paths the code could take. I looked into some of the libraries created specifically for testing sagas but they didn't seem much better.
+that there was too much boilerplate that had to be written and it was tedious to test different code paths. I looked into some of the libraries created specifically for testing sagas but they didn't seem much better.
 
 `Saganario` tries to provide a compact and powerful way to unit test redux sagas. It can be used with any testing framework.
 
@@ -58,11 +58,11 @@ The tests can be recursively defined as follows:
 ]
 ```
 
-Essentially they represent a tree in which each node is a sequence of `expect` functions and each child node is another sequence of `expect` functions to which we transition by giving the argument of the `ifGiven` function to the saga. `Saganario` will run and check each path in the tree from the root to any of the leaves.
+Essentially they represent a tree in which each node is a sequence of `expect` calls and each child node is yet another sequence of `expect` calls to which we transition by giving the argument of the `ifGiven` function to the saga. `Saganario` will run and check each path in the tree from the root to any of the leaves.
 
 ### Running tests
 
-The `prepareTest` function you saw earlier creates a function that you can execute and in case of an unmet expectation, it throws an error. `prepareTest` takes the saga as the first argument, then any arguments the saga itself takes and then the test scenario.
+The `prepareTest` function you saw earlier creates a function that you can execute and in case of an unmet expectation it throws an error. `prepareTest` takes the saga as the first argument, then any arguments the saga itself takes and then the test scenario.
 
 For example you can use `saganario` with `mocha` like so:
 
@@ -139,7 +139,7 @@ function *saga() {
   yield 'error';
 }
 ```
-You only care that it yields `'start'` at the beginning and that at some point later it emits `'end'`. You can write the following test:
+You only care that it yields `'start'` at the beginning and than, at some point later, it emits `'end'`. You can write the following test:
 
 ```javascript
 const test = prepareTest(saga, [
@@ -154,11 +154,11 @@ const test = prepareTest(saga, [
 ]);
 ```
 
-*Note: If the expected value is not reached after 100 iterations of the generator, an error will be thrown.*
+*Note: If the expected value is not reached after 100 iterations of the generator an error will be thrown.*
 
 #### `expectEnd`
 
-This type of expectation is used when you want check that after the expected value is emitted, the generator ends.
+This type of expectation is used when you want to check that after the expected value is emitted, the generator ends.
 
 Example saga:
 
@@ -178,11 +178,11 @@ const test = prepareTest(saga, [
 ]);
 ```
 
-*Note: An error will be thrown if the generator is not done when `expectEnd` is checked.*
+*Note: An error will be thrown if the generator is not done when `expectEnd` is called.*
 
 ### Giving values
 
-The only function you use for this is `ifGiven`. If the argument you set is not an instance of `Error` the value is given to the generator by using `generator.next(<value>)`. Otherwise it's thrown as an exception in the generator using `generator.throw(<value>)`.
+The only function you use for this is `ifGiven`. If the argument you set is not an instance of `Error` the value is given to the generator by using `generator.next(<value>)`, otherwise it's thrown as an exception in the generator using `generator.throw(<value>)`.
 
 ## Installation
 
