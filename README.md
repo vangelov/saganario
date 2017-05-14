@@ -139,7 +139,7 @@ function *saga() {
   yield 'error';
 }
 ```
-You only care that it yields `'start'` at the beginning and that at some point later it emits `'result'`. You can write the following test:
+You only care that it yields `'start'` at the beginning and that at some point later it emits `'end'`. You can write the following test:
 
 ```javascript
 const test = prepareTest(saga, [
