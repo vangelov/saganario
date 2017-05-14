@@ -173,7 +173,7 @@ Test:
 
 ```javascript
 const test = prepareTest(saga, [
-  expectNext('start');
+  expectNext('value1');
   expectEnd('value2');
 ]);
 ```
@@ -190,7 +190,7 @@ The only function you use for this is `ifGiven`. If the argument you set is not 
 
 ## Example
 
-In `/examples` folder you will find several tests for sagas of different complexities. You can run them with: `npm run examples`.
+In the `/examples` folder you will find several tests for sagas of different complexities. You can run them with: `npm run examples`.
 
 ## Test
 
