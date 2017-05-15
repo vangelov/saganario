@@ -1,7 +1,7 @@
 # saganario
 
 When I first began writing unit tests for sagas using a standard framework such as `mocha`, I noticed
-that there was too much boilerplate that had to be written and it was tedious to test different code paths. I looked into some of the libraries created specifically for testing sagas but they didn't seem much better.
+that there was too much boilerplate that had to be written and it was tedious to test different code paths. Another problem was tests checked every yielded value and its order which made them too dependent on the saga implementation. I looked into some of the libraries created specifically for testing sagas but they didn't seem much better.
 
 `Saganario` tries to provide a compact and powerful way to unit test redux sagas. It can be used with any testing framework.
 
